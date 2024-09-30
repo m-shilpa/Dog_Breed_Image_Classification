@@ -9,16 +9,13 @@ This repository contains a project for training and performing inference on Kagg
 - [Project Structure](#project-structure)
 - [Setup](#setup)
   - [Prerequisites](#prerequisites)
+  - [Development Container](#development-container)
 - [Usage](#usage)
   - [Training](#training)
   - [Evaluation](#evaluation)
   - [Inference](#inference)
 - [Results](#results)
 - [Volume Mounts](#volume-mounts)
-- [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
 
 ## Introduction
 
@@ -61,6 +58,8 @@ Additionally, a set of 10 test images (`dog_breed_10_test_images.zip`) is includ
 │   ├── train.py
 │   ├── eval.py
 │   └── infer.py
+├── .devcontainer
+│   └── devcontainer.json
 ├── .dockerignore
 ├── Dockerfile
 ├── docker-compose.yml
@@ -76,6 +75,17 @@ Additionally, a set of 10 test images (`dog_breed_10_test_images.zip`) is includ
 - Ensure you have Docker and Docker Compose installed on your machine:
   - [Docker Installation Guide](https://docs.docker.com/get-docker/)
   - [Docker Compose Installation Guide](https://docs.docker.com/compose/install/)
+
+### Development Container
+
+This project includes a development container setup, allowing you to work in a consistent environment with all the necessary dependencies pre-installed. 
+
+To use the development container:
+
+1. **Open the Project in VSCode**: Ensure you have the Remote - Containers extension installed.
+2. **Reopen in Container**: Use the command palette (Ctrl+Shift+P) and select **Remote-Containers: Reopen in Container**. This will build and open your development container.
+3. **Access the Terminal**: Once the container is running, open a terminal in VSCode. You can now run commands like `python train.py` directly within the container environment.
+
 
 ### Installation Steps
 
@@ -130,9 +140,4 @@ The Docker Compose file defines several named volumes to manage data and logs:
 - **logs**: Centralized logging for training and inference.
 - **output**: Stores the output of the inference process.
 
-## Troubleshooting
 
-If you encounter issues during setup, consider checking:
-- Your Docker installation and permissions.
-- Compatibility of your Docker Compose file version.
-- Any errors in the console output for specific troubleshooting steps.
