@@ -16,6 +16,7 @@ class DogBreedClassifier(L.LightningModule):
         # Multi-class accuracy with num_classes=2
         self.train_acc = Accuracy(task="multiclass", num_classes=10)
         self.val_acc = Accuracy(task="multiclass", num_classes=10)
+        self.test_acc = Accuracy(task="multiclass", num_classes=10)
 
         self.save_hyperparameters()
 
@@ -40,6 +41,15 @@ class DogBreedClassifier(L.LightningModule):
         self.val_acc(preds, y)
         self.log("val_loss", loss, prog_bar=True)
         self.log("val_acc", self.val_acc, prog_bar=True)
+
+    def test_step(self, batch, batch_idx):
+        x, y = batch
+        logits = self(x)
+        loss = F.cross_entropy(logits, y)
+        preds = F.softmax(logits, dim=1)
+        self.test_acc(preds, y)
+        self.log("test_loss", loss, prog_bar=True)
+        self.log("test_acc", self.test_acc, prog_bar=True)
 
     def configure_optimizers(self):
         return optim.Adam(self.parameters(), lr=self.lr)

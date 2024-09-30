@@ -29,11 +29,15 @@ def main():
 
     data_module = DogBreedImageDataModule(dl_path=data_dir, batch_size=32, num_workers=0)
     latest_checkpoint = get_latest_checkpoint(checkpoint_dir)
+
+    print(latest_checkpoint)
+
+    # Load model from checkpoint
     model = DogBreedClassifier.load_from_checkpoint(latest_checkpoint)
 
     trainer = L.Trainer(
         logger=TensorBoardLogger(save_dir=log_dir, name="dogbreed_classification_eval"),
-        callbacks=[get_rich_progress()]
+        callbacks=[RichProgressBar()]
     )
 
     evaluate_model(data_module, model, trainer)
