@@ -99,6 +99,9 @@ To use the development container:
    ```bash
    docker compose build --no-cache
    ```
+   The following is the output of the command on gitpod:
+   ![image](https://github.com/user-attachments/assets/b8886aee-2074-4106-95f2-29951990a21c)
+
 
 ## Usage
 
@@ -110,6 +113,10 @@ docker-compose up train
 ```
 This command will initiate the training process using the training dataset. The model's performance metrics and checkpoints will be available in the `logs/` directory.
 
+The following is the output of the command on gitpod:
+![image](https://github.com/user-attachments/assets/4b926b33-d5b6-4c3a-afeb-e9b448e8659c)
+
+
 ### Evaluation
 
 To perform evaluation of the model, use the `eval` service:
@@ -117,6 +124,9 @@ To perform evaluation of the model, use the `eval` service:
 docker-compose up eval
 ```
 This will evaluate the model on the validation dataset and output the results.
+The following is the output of the command on gitpod:
+![image](https://github.com/user-attachments/assets/4623e8a4-a678-49ab-9a7c-e7736a51095f)
+
 
 ### Inference
 
@@ -126,7 +136,8 @@ docker-compose up infer
 ```
 You can place your images in the `output/` directory to see the results after the inference completes.
 
-
+The following is the output of the command on gitpod:
+![image](https://github.com/user-attachments/assets/93ecdb2f-2f86-4632-9287-1ce43190f97a)
 
 ## Results
 
