@@ -55,10 +55,10 @@ def main(args):
         """Download images and prepare images datasets."""
         download_and_extract_archive(
             url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_10_test_images.zip",
-            download_root='./',
+            download_root='/workspace/data',
             remove_finished=True
         )
-        input_folder = base_dir / 'dog_breed_10_test_images'
+        input_folder = base_dir / 'data' /'dog_breed_10_test_images'
     else:
         input_folder = Path(args.input_folder)
 
