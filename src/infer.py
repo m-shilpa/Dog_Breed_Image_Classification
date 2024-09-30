@@ -66,7 +66,7 @@ def main(args):
     output_folder.mkdir(exist_ok=True, parents=True)
 
     image_files = list(input_folder.glob('*'))
-    print(image_files)
+    #print(image_files)
     with get_rich_progress() as progress:
         task = progress.add_task("[green]Processing images...", total=len(image_files))
         
@@ -87,7 +87,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Infer using trained DogBreed Classifier")
     parser.add_argument("--input_folder", type=str, required=False, default=None, help="Path to input folder containing images")
-    parser.add_argument("--output_folder", type=str, required=False, default='../output', help="Path to output folder for predictions")
+    parser.add_argument("--output_folder", type=str, required=False, default='/workspace/output', help="Path to output folder for predictions")
     parser.add_argument("--ckpt_path", type=str, required=False,default=ckpt_file_path, help="Path to model checkpoint")
     args = parser.parse_args()
 
