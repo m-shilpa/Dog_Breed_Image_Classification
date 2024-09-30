@@ -114,7 +114,8 @@ docker-compose up train
 This command will initiate the training process using the training dataset. The model's performance metrics and checkpoints will be available in the `logs/` directory.
 
 The following is the output of the command on gitpod:
-![image](https://github.com/user-attachments/assets/4b926b33-d5b6-4c3a-afeb-e9b448e8659c)
+<img width="751" alt="image" src="https://github.com/user-attachments/assets/63ceb754-987c-4b9d-aaed-ff78a9ccef60">
+
 
 We can view the files created inside the docker container using the command:
 ```bash 
@@ -122,7 +123,7 @@ docker-compose run train /bin/bash
 ```
 The following is the output:
 
-<img width="654" alt="image" src="https://github.com/user-attachments/assets/68f1f514-ad49-4563-b7a0-a829ba932b01">
+<img width="521" alt="image" src="https://github.com/user-attachments/assets/53123c64-a746-471d-82c3-2f049d1f3485">
 
 
 ### Evaluation
@@ -133,7 +134,9 @@ docker-compose up eval
 ```
 This will evaluate the model on the validation dataset and output the results.
 The following is the output of the command on gitpod:
-![image](https://github.com/user-attachments/assets/4623e8a4-a678-49ab-9a7c-e7736a51095f)
+
+<img width="752" alt="image" src="https://github.com/user-attachments/assets/1f593925-3d58-4b01-9d4b-166fdf7b4bed">
+
 
 We can view the files created inside the docker container using the command:
 ```bash 
@@ -141,7 +144,8 @@ docker-compose run eval /bin/bash
 ```
 The following is the output:
 
-<img width="698" alt="image" src="https://github.com/user-attachments/assets/8c9224b4-a297-4bb2-8cab-7462fa626f65">
+<img width="575" alt="image" src="https://github.com/user-attachments/assets/db7b13ce-20e7-48c0-90fa-20c7e786698d">
+
 
 
 ### Inference
@@ -153,7 +157,9 @@ docker-compose up infer
 You can place your images in the `output/` directory to see the results after the inference completes.
 
 The following is the output of the command on gitpod:
-![image](https://github.com/user-attachments/assets/93ecdb2f-2f86-4632-9287-1ce43190f97a)
+
+<img width="755" alt="image" src="https://github.com/user-attachments/assets/1a2d532c-deaf-49cd-9c01-97f378f7b0d6">
+
 
 We can view the files created inside the docker container using the command:
 ```bash 
@@ -161,8 +167,29 @@ docker-compose run infer /bin/bash
 ```
 The following is the output:
 
-<img width="608" alt="image" src="https://github.com/user-attachments/assets/3a209713-2c1d-43e7-a6ac-f276d75a3326">
+<img width="569" alt="image" src="https://github.com/user-attachments/assets/b948f5a8-5234-4b98-9d98-b9d94f8419aa">
 
+The following are the images in the `output/` directory
+
+<table border="0">
+<tr>
+  <td><img src="https://github.com/user-attachments/assets/defb814f-1f46-47eb-bb5b-0ea8ec62925d" width="500" /></td>
+  <td><img src="https://github.com/user-attachments/assets/c6b06c26-ddbb-4730-81c9-59e33ef91540" width="500" /></td>
+  <td><img src="https://github.com/user-attachments/assets/e58ae322-21bf-4455-9247-2d739b50ac30" width="500" /></td>
+  <td><img src="https://github.com/user-attachments/assets/d5db4274-4ef1-44bd-a82a-30be1f0c54b8" width="500" /></td>
+</tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/234dec11-caa3-4501-a814-4bc9297a0486" width="500" /></td>
+   <td><img src="https://github.com/user-attachments/assets/10482bdb-4ab1-480b-ad37-b40f5a1b7ca9" width="500" /></td>
+    <td><img src="https://github.com/user-attachments/assets/4db979dd-0e1d-40ce-946e-330b08d79c1e" width="500" /></td>
+    <td><img src="https://github.com/user-attachments/assets/bacb00a1-f73b-4a19-b79e-e14eff29d143" width="500" /></td>
+  </tr>
+<tr>
+  <td><img src="https://github.com/user-attachments/assets/9035a418-c20d-4d38-a31e-d4aceef352a5" width="500" /></td>
+  <td><img src="https://github.com/user-attachments/assets/a3a7d602-6dcb-4891-9f8f-2ee2cbc97115" width="500" /></td>
+
+</tr>
+</table>
 
 ## Results
 
