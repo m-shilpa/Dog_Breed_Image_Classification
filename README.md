@@ -116,6 +116,14 @@ This command will initiate the training process using the training dataset. The 
 The following is the output of the command on gitpod:
 ![image](https://github.com/user-attachments/assets/4b926b33-d5b6-4c3a-afeb-e9b448e8659c)
 
+We can view the files created inside the docker container using the command:
+```bash 
+docker-compose run train /bin/bash
+```
+The following is the output:
+
+<img width="654" alt="image" src="https://github.com/user-attachments/assets/68f1f514-ad49-4563-b7a0-a829ba932b01">
+
 
 ### Evaluation
 
@@ -126,6 +134,14 @@ docker-compose up eval
 This will evaluate the model on the validation dataset and output the results.
 The following is the output of the command on gitpod:
 ![image](https://github.com/user-attachments/assets/4623e8a4-a678-49ab-9a7c-e7736a51095f)
+
+We can view the files created inside the docker container using the command:
+```bash 
+docker-compose run eval /bin/bash
+```
+The following is the output:
+
+<img width="698" alt="image" src="https://github.com/user-attachments/assets/8c9224b4-a297-4bb2-8cab-7462fa626f65">
 
 
 ### Inference
@@ -138,6 +154,15 @@ You can place your images in the `output/` directory to see the results after th
 
 The following is the output of the command on gitpod:
 ![image](https://github.com/user-attachments/assets/93ecdb2f-2f86-4632-9287-1ce43190f97a)
+
+We can view the files created inside the docker container using the command:
+```bash 
+docker-compose run infer /bin/bash
+```
+The following is the output:
+
+<img width="608" alt="image" src="https://github.com/user-attachments/assets/3a209713-2c1d-43e7-a6ac-f276d75a3326">
+
 
 ## Results
 
