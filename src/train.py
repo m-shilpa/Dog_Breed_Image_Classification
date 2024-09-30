@@ -16,7 +16,7 @@ def train_and_test(data_module, model, trainer):
 
 def main():
     # Set up paths
-    base_dir = Path('.')
+    base_dir = Path('..')
     data_dir = base_dir / "data"
     log_dir = base_dir / "logs"
     

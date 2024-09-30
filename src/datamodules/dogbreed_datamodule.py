@@ -1,6 +1,5 @@
 from pathlib import Path
 from typing import Union
-import zipfile
 from random import shuffle
 
 import lightning as L
@@ -19,8 +18,11 @@ class DogBreedImageDataModule(L.LightningDataModule):
 
     def prepare_data(self):
         """Download images and prepare images datasets."""
-        with zipfile.ZipFile('dog_breed_image_dataset.zip', 'r') as zip_ref:
-            zip_ref.extractall(self._dl_path)
+        download_and_extract_archive(
+            url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_image_dataset.zip",
+            download_root=self._dl_path,
+            remove_finished=True
+        )
 
     @property
     def data_path(self):

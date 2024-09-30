@@ -2,12 +2,14 @@
 
 import argparse
 from pathlib import Path
+import os
 
 import torch
 import torch.nn.functional as F
 import matplotlib.pyplot as plt
 from PIL import Image
 from torchvision import transforms
+from torchvision.datasets.utils import download_and_extract_archive
 
 from models.dogbreed_classifier import DogBreedClassifier
 from utils.logging_utils import setup_logger, task_wrapper, get_rich_progress
@@ -48,14 +50,25 @@ def save_prediction_image(image, predicted_label, confidence, output_path):
 
 @task_wrapper
 def main(args):
-    model = CatDogClassifier.load_from_checkpoint(args['ckpt_path'])
+    model = DogBreedClassifier.load_from_checkpoint(args.ckpt_path)
     model.eval()
 
-    input_folder = Path(args['input_folder'])
-    output_folder = Path(args['output_folder'])
+    if args.input_folder == None:
+        """Download images and prepare images datasets."""
+        download_and_extract_archive(
+            url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_10_test_images.zip",
+            download_root='../',
+            remove_finished=True
+        )
+        input_folder = Path('../dog_breed_10_test_images')
+    else:
+        input_folder = Path(args.input_folder)
+
+    output_folder = Path(args.output_folder)
     output_folder.mkdir(exist_ok=True, parents=True)
 
     image_files = list(input_folder.glob('*'))
+    print(image_files)
     with get_rich_progress() as progress:
         task = progress.add_task("[green]Processing images...", total=len(image_files))
         
@@ -71,19 +84,18 @@ def main(args):
                 progress.advance(task)
 
 if __name__ == "__main__":
-    # parser = argparse.ArgumentParser(description="Infer using trained CatDog Classifier")
-    # parser.add_argument("--input_folder", type=str, required=True, help="Path to input folder containing images")
-    # parser.add_argument("--output_folder", type=str, required=True, help="Path to output folder for predictions")
-    # parser.add_argument("--ckpt_path", type=str, required=True, help="Path to model checkpoint")
-    # args = parser.parse_args()
 
-    args = {}
-    args['input_folder'] = './test_images'
-    args['output_folder'] ='./output'
-    args['ckpt_path'] = f'./logs/dogbreed_classification/checkpoints/{os.listdir("./logs/dogbreed_classification/checkpoints/")[0]}'
+    ckpt_file_path = f'../logs/dogbreed_classification/checkpoints/{os.listdir("../logs/dogbreed_classification/checkpoints/")[-1]}'
+
+    parser = argparse.ArgumentParser(description="Infer using trained DogBreed Classifier")
+    parser.add_argument("--input_folder", type=str, required=False, default=None, help="Path to input folder containing images")
+    parser.add_argument("--output_folder", type=str, required=False, default='../output', help="Path to output folder for predictions")
+    parser.add_argument("--ckpt_path", type=str, required=False,default=ckpt_file_path, help="Path to model checkpoint")
+    args = parser.parse_args()
+
     print(args)
 
-    log_dir = Path('.') / "logs"
+    log_dir = Path('..') / "logs"
     setup_logger(log_dir / "infer_log.log")
 
     main(args)
