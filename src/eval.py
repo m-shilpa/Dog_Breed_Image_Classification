@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 import lightning as L
 from lightning.pytorch.loggers import TensorBoardLogger
+from lightning.pytorch.callbacks import ModelCheckpoint, RichProgressBar, RichModelSummary
+
 from datamodules.dogbreed_datamodule import DogBreedImageDataModule
 from models.dogbreed_classifier import DogBreedClassifier
 from utils.logging_utils import setup_logger, task_wrapper, get_rich_progress
