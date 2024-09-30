@@ -5,3 +5,4 @@ loguru==0.7.2
 tensorboard==2.14.0
 matplotlib==3.7.2
 rich==13.8.1
+numpy<2

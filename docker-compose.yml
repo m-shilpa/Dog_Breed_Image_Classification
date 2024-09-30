@@ -8,6 +8,17 @@ services:
       - data:/workspace/data  # Named volume for training data
       - logs:/workspace/logs  # Named volume for logs
 
+  eval:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "src/eval.py"]
+    depends_on:
+      - train  # Specify that eval depends on train
+    volumes:
+      - data:/workspace/data  # Same volume for access to training data
+      - logs:/workspace/logs  # Same volume for logs
+
   infer:
     build:
       context: .
@@ -19,6 +30,19 @@ services:
       - data:/workspace/data  # Same volume for access to training data
       - logs:/workspace/logs  # Same volume for logs
       - output:/workspace/output  # Named volume for output
+
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./src:/workspace/src  # Mount the source code for development
+      - data:/workspace/data
+      - logs:/workspace/logs
+      - output:/workspace/output
+    tty: true
+    stdin_open: true
+    command: ["bash"]  # Start with a shell to allow for interactive commands
 
 volumes:
   data:  # Define the named volume for data

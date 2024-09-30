@@ -62,13 +62,11 @@ Additionally, a set of 10 test images (`dog_breed_10_test_images.zip`) is includ
 │   ├── eval.py
 │   └── infer.py
 ├── .dockerignore
-├── .gitignore
 ├── Dockerfile
-├── README.md
 ├── docker-compose.yml
-├── dog_breed_10_test_images.zip
-├── dog_breed_image_dataset.zip
 ├── requirements.txt
+├── dog_breed_image_dataset.zip
+└── dog_breed_10_test_images.zip
 ```
 
 ## Setup
@@ -90,7 +88,6 @@ Additionally, a set of 10 test images (`dog_breed_10_test_images.zip`) is includ
 2. **Build and start the Docker containers:**
    ```bash
    docker compose build --no-cache
-   docker compose up
    ```
 
 ## Usage
@@ -99,7 +96,7 @@ Additionally, a set of 10 test images (`dog_breed_10_test_images.zip`) is includ
 
 To train the model, run:
 ```bash
-docker-compose run train
+docker-compose up train
 ```
 This command will initiate the training process using the training dataset. The model's performance metrics and checkpoints will be available in the `logs/` directory.
 
@@ -107,7 +104,7 @@ This command will initiate the training process using the training dataset. The 
 
 To perform evaluation of the model, use the `eval` service:
 ```bash
-docker-compose run eval
+docker-compose up eval
 ```
 This will evaluate the model on the validation dataset and output the results.
 
@@ -115,9 +112,11 @@ This will evaluate the model on the validation dataset and output the results.
 
 To perform inference on new images, use the `infer` service:
 ```bash
-docker-compose run infer
+docker-compose up infer
 ```
 You can place your images in the `output/` directory to see the results after the inference completes.
+
+
 
 ## Results
 
