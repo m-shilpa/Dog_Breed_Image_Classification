@@ -1,0 +1,24 @@
+services:
+  train:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "src/train.py"]  # Command to run the training script
+    volumes:
+      - data:/workspace/src/data  # Named volume for training data
+      - logs:/workspace/src/logs  # Named volume for logs
+
+  infer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "src/infer.py"]
+    volumes:
+      - data:/workspace/src/data  # Same volume for access to training data
+      - logs:/workspace/src/logs  # Same volume for logs
+      - output:/workspace/output  # Named volume for output
+
+volumes:
+  data:  # Define the named volume for data
+  logs:  # Define the named volume for logs
+  output:  # Define the named volume for output
