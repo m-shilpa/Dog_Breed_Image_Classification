@@ -5,17 +5,19 @@ services:
       dockerfile: Dockerfile
     command: ["python", "src/train.py"]  # Command to run the training script
     volumes:
-      - data:/workspace/src/data  # Named volume for training data
-      - logs:/workspace/src/logs  # Named volume for logs
+      - data:/workspace/data  # Named volume for training data
+      - logs:/workspace/logs  # Named volume for logs
 
   infer:
     build:
       context: .
       dockerfile: Dockerfile
     command: ["python", "src/infer.py"]
+    depends_on:
+      - train  # Specify that infer depends on train
     volumes:
-      - data:/workspace/src/data  # Same volume for access to training data
-      - logs:/workspace/src/logs  # Same volume for logs
+      - data:/workspace/data  # Same volume for access to training data
+      - logs:/workspace/logs  # Same volume for logs
       - output:/workspace/output  # Named volume for output
 
 volumes:

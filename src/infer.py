@@ -1,5 +1,3 @@
-# src/infer.py
-
 import argparse
 from pathlib import Path
 import os
@@ -57,10 +55,10 @@ def main(args):
         """Download images and prepare images datasets."""
         download_and_extract_archive(
             url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_10_test_images.zip",
-            download_root='../',
+            download_root='./',
             remove_finished=True
         )
-        input_folder = Path('../dog_breed_10_test_images')
+        input_folder = base_dir / 'dog_breed_10_test_images'
     else:
         input_folder = Path(args.input_folder)
 
@@ -85,7 +83,7 @@ def main(args):
 
 if __name__ == "__main__":
 
-    ckpt_file_path = f'../logs/dogbreed_classification/checkpoints/{os.listdir("../logs/dogbreed_classification/checkpoints/")[-1]}'
+    ckpt_file_path = f'/workspace/logs/dogbreed_classification/checkpoints/{os.listdir("/workspace/logs/dogbreed_classification/checkpoints/")[-1]}'
 
     parser = argparse.ArgumentParser(description="Infer using trained DogBreed Classifier")
     parser.add_argument("--input_folder", type=str, required=False, default=None, help="Path to input folder containing images")
@@ -94,8 +92,9 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     print(args)
-
-    log_dir = Path('..') / "logs"
+    
+    base_dir = Path('/workspace')
+    log_dir = base_dir / "logs"
     setup_logger(log_dir / "infer_log.log")
 
     main(args)

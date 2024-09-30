@@ -18,11 +18,14 @@ class DogBreedImageDataModule(L.LightningDataModule):
 
     def prepare_data(self):
         """Download images and prepare images datasets."""
-        download_and_extract_archive(
-            url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_image_dataset.zip",
-            download_root=self._dl_path,
-            remove_finished=True
-        )
+        dataset_path = self.data_path
+
+        if not dataset_path.exists():
+            download_and_extract_archive(
+                url="https://github.com/m-shilpa/lightning-template-hydra/raw/main/dog_breed_image_dataset.zip",
+                download_root=self._dl_path,
+                remove_finished=True
+            )
 
     @property
     def data_path(self):
