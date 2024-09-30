@@ -6,3 +6,7 @@ output/
 logs/
 data/
 README.md
+docker-compose.yml
+Dockerfile
+dog_breed_image_dataset.zip
+dog_breed_10_test_images.zip
